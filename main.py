@@ -6,6 +6,8 @@ import webbrowser
 import uvicorn
 import socket
 import warnings
+import threading
+import time
 
 # Filter out the specific warning from torch.amp.autocast_mode
 warnings.filterwarnings("ignore", message="User provided device_type of 'cuda', but CUDA is not available")
@@ -55,13 +57,17 @@ def main():
     print(f"💻 Device: {args.device if args.device else 'Auto-detect'}")
     print(f"{'='*50}\n")
 
-    # Open browser in a separate thread/process logic isn't needed as uvicorn blocks, 
-    # so we open it before starting uvicorn if not in debug mode (debug mode reloads)
-    if not args.no_gui:
+    # Function to open browser after a delay
+    def open_browser_delayed():
+        time.sleep(1.5)  # Wait for server to start
         try:
             webbrowser.open(server_url)
         except Exception as e:
             print(f"Failed to open browser: {e}")
+
+    # Open browser in a separate thread after server starts
+    if not args.no_gui:
+        threading.Thread(target=open_browser_delayed, daemon=True).start()
 
     # Run the application
     # Use "backend:app" string to enable reload if debug is True
