@@ -1,0 +1,3 @@
+error: Distribution `torch==2.10.0 @ registry+https://download.pytorch.org/whl/cpu` can't be installed because it doesn't have a source distribution or wheel for the current platform
+
+hint: You're on macOS (`macosx_26_0_x86_64`), but `torch` (v2.10.0) only has wheels for the following platform: `macosx_11_0_arm64`
