@@ -1,0 +1,97 @@
+/* Global Variables */
+:root {
+  --primary-orange: #ff7e14;
+  --light-orange: #ffeaa7;
+  --dark-orange: #e17055;
+  --background-color: #f8f9fa;
+  --card-background: #ffffff;
+  --text-color: #333333;
+  --border-color: #dee2e6;
+  --shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --border-radius: 0.5rem;
+  --transition: all 0.3s ease;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, var(--primary-orange), #ff9a3d);
+  color: white;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+/* Tab Navigation */
+.tool-tabs {
+  display: flex;
+  border-bottom: 2px solid var(--border-color);
+  margin-bottom: 1.5rem;
+  background: var(--card-background);
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  padding: 0 1rem;
+}
+
+.tool-tabs .tab {
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  font-weight: 600;
+  color: #6c757d;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tool-tabs .tab:hover {
+  color: var(--primary-orange);
+  background: rgba(255, 126, 20, 0.05);
+}
+
+.tool-tabs .tab.active {
+  border-bottom-color: var(--primary-orange);
+  color: var(--primary-orange);
+}
+
+/* Panel Display Control */
+.panel {
+  display: none;
+}
+
+.panel.active {
+  display: block;
+}
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
+  .selection-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

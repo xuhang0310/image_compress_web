@@ -1,0 +1,46 @@
+[project]
+name = "image_compress_web"
+version = "0.1.0"
+description = "Image compression web service with watermark removal"
+requires-python = "==3.11.*"
+dependencies = [
+    "fastapi==0.115.6",
+    "uvicorn[standard]==0.24.0.post1",
+    "pillow==11.0.0",
+    "python-multipart==0.0.9",
+    "lama-cleaner==1.2.5",
+    "huggingface_hub<0.20.0", 
+]
+
+[tool.uv]
+package = false
+
+# 1. 定义两个可选的分支：cpu 和 gpu
+[project.optional-dependencies]
+cpu = [
+    "torch>=1.9.0",
+    "torchvision>=0.10.0",
+]
+gpu = [
+    "torch>=1.9.0",
+    "torchvision>=0.10.0",
+]
+
+# 2. 告诉 uv：如果安装 cpu 版，去哪里找包
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+# 3. 这里的魔法配置：如果是安装 cpu 分支，就强制从 cpu 索引下载
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cpu", extra = "cpu" },
+]
+torchvision = [
+  { index = "pytorch-cpu", extra = "cpu" },
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

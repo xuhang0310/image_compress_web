@@ -1,0 +1,10 @@
+fastapi==0.115.6
+uvicorn[standard]==0.24.0.post1
+Pillow==11.0.0
+python-multipart==0.0.9
+
+# LaMa 深度学习去水印模型 (Python 3.11+ 兼容)
+# 安装前请先执行: pip install torch torchvision
+torch>=1.9.0
+torchvision>=0.10.0
+lama-cleaner==1.2.5
