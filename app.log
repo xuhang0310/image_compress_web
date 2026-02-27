@@ -1,3 +1,18 @@
 error: Distribution `torch==2.10.0 @ registry+https://download.pytorch.org/whl/cpu` can't be installed because it doesn't have a source distribution or wheel for the current platform
 
 hint: You're on macOS (`macosx_26_0_x86_64`), but `torch` (v2.10.0) only has wheels for the following platform: `macosx_11_0_arm64`
+2026-02-27 21:39:26,838 - backend - INFO - SILICONFLOW_API_KEY 已加载: 是
+2026-02-27 21:39:26,838 - backend - INFO - SILICONFLOW_API_KEY 前8位: sk-jetlu...
+2026-02-27 21:39:36,164 - api.deps - INFO - get_siliconflow_api_key 被调用, API Key 存在: 是
+2026-02-27 21:39:36,164 - api.deps - INFO - API Key 前8位: sk-jetlu...
+2026-02-27 21:39:36,170 - api.ai_draw - INFO - 调用硅基流动 API: prompt=生成一个2.5D的边牧形象，正在笼子里面鬼鬼祟祟的东张西望..., size=1024x1024
+2026-02-27 21:40:41,039 - api.deps - INFO - get_siliconflow_api_key 被调用, API Key 存在: 是
+2026-02-27 21:40:41,040 - api.deps - INFO - API Key 前8位: sk-jetlu...
+2026-02-27 21:40:41,040 - api.ai_draw - INFO - 调用硅基流动 API: prompt=生成一个2.5D的边牧形象，正在笼子里面鬼鬼祟祟的东张西望..., size=720x1280
+2026-02-27 21:41:51,011 - api.deps - INFO - get_siliconflow_api_key 被调用, API Key 存在: 是
+2026-02-27 21:41:51,011 - api.deps - INFO - API Key 前8位: sk-jetlu...
+2026-02-27 21:41:51,012 - api.ai_draw - INFO - 调用硅基流动 API: prompt=生成一个2.5D的边牧卡通形象，正在笼子里面鬼鬼祟祟的东张西望，作为小红书文章的封面..., size=720x1280
+2026-02-27 21:42:26,178 - api.deps - INFO - get_siliconflow_api_key 被调用, API Key 存在: 是
+2026-02-27 21:42:26,179 - api.deps - INFO - API Key 前8位: sk-jetlu...
+2026-02-27 21:42:26,179 - api.ai_draw - INFO - 调用硅基流动 API: prompt=生成一个2.5D的边牧卡通形象，正在笼子里面鬼鬼祟祟的东张西望，作为小红书文章的封面；增加文字：我犯..., size=720x1280
+2026-02-27 21:44:26,331 - api.ai_draw - ERROR - API 请求超时

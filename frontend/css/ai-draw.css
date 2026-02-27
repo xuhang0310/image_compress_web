@@ -1,0 +1,458 @@
+/* AI Drawing Styles */
+
+/* AI Page Header */
+.ai-header {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+.ai-header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.ai-header a {
+    color: white;
+    text-decoration: none;
+}
+
+.ai-header a:hover {
+    text-decoration: underline;
+}
+
+/* AI Drawing Tabs */
+.ai-tabs {
+    display: flex;
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 1.5rem;
+    background: var(--card-background);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    padding: 0 1rem;
+}
+
+.ai-tabs .tab {
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    font-weight: 600;
+    color: #6c757d;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ai-tabs .tab:hover {
+    color: #667eea;
+    background: rgba(102, 126, 234, 0.05);
+}
+
+.ai-tabs .tab.active {
+    border-bottom-color: #667eea;
+    color: #667eea;
+}
+
+/* AI Panel */
+.ai-panel {
+    display: none;
+}
+
+.ai-panel.active {
+    display: block;
+}
+
+/* Prompt Input Area */
+.prompt-area {
+    margin-bottom: 1.5rem;
+}
+
+.prompt-textarea {
+    min-height: 100px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.negative-prompt {
+    margin-top: 1rem;
+}
+
+/* Parameter Grid */
+.parameter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.parameter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.parameter-group label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.parameter-hint {
+    font-size: 0.75rem;
+    color: #6c757d;
+    margin-top: 0.25rem;
+}
+
+/* Size Selection */
+.size-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.size-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    background: white;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.85rem;
+}
+
+.size-btn:hover {
+    border-color: #667eea;
+    color: #667eea;
+}
+
+.size-btn.active {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+}
+
+/* Slider with Value Display */
+.slider-with-value {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.slider-with-value input[type="range"] {
+    flex: 1;
+}
+
+.slider-value {
+    min-width: 3rem;
+    text-align: right;
+    font-weight: 600;
+    color: #667eea;
+}
+
+/* Upload Area for Img2Img */
+.img2img-upload-area {
+    border: 2px dashed var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-bottom: 1.5rem;
+}
+
+.img2img-upload-area:hover,
+.img2img-upload-area.drag-over {
+    border-color: #667eea;
+    background: rgba(102, 126, 234, 0.05);
+}
+
+.img2img-upload-area .upload-icon {
+    font-size: 3rem;
+    color: #667eea;
+    margin-bottom: 1rem;
+}
+
+.img2img-upload-area .upload-text {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.img2img-upload-area .upload-hint {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+/* Image Preview */
+.image-preview-container {
+    display: none;
+    margin-bottom: 1.5rem;
+}
+
+.image-preview-container.show {
+    display: block;
+}
+
+.image-preview-wrapper {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+}
+
+.image-preview-wrapper img {
+    max-width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.image-preview-remove {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #dc3545;
+    font-size: 1.2rem;
+    transition: var(--transition);
+}
+
+.image-preview-remove:hover {
+    background: #dc3545;
+    color: white;
+}
+
+/* Strength Slider for Img2Img */
+.strength-slider-container {
+    margin-bottom: 1.5rem;
+}
+
+.strength-indicator {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: #6c757d;
+    margin-top: 0.25rem;
+}
+
+/* Generate Button */
+.generate-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    width: 100%;
+}
+
+.generate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.generate-btn:active {
+    transform: translateY(0);
+}
+
+.generate-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Loading Spinner */
+.loading-container {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+}
+
+.loading-container.show {
+    display: block;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+    color: #6c757d;
+    font-size: 1rem;
+}
+
+/* Result Gallery */
+.result-gallery {
+    display: none;
+    margin-top: 1.5rem;
+}
+
+.result-gallery.show {
+    display: block;
+}
+
+.result-image-container {
+    text-align: center;
+}
+
+.result-image {
+    max-width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.result-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.result-actions button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Comparison View for Img2Img */
+.comparison-view {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .comparison-view {
+        grid-template-columns: 1fr;
+    }
+}
+
+.comparison-item {
+    text-align: center;
+}
+
+.comparison-item h6 {
+    margin-bottom: 0.5rem;
+    color: #6c757d;
+}
+
+.comparison-item img {
+    max-width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+/* Error Message */
+.error-message {
+    display: none;
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    margin-top: 1rem;
+}
+
+.error-message.show {
+    display: block;
+}
+
+/* History Grid */
+.history-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.history-item {
+    position: relative;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    aspect-ratio: 1;
+}
+
+.history-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.history-item:hover img {
+    transform: scale(1.05);
+}
+
+.history-item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.history-item:hover .history-item-overlay {
+    opacity: 1;
+}
+
+.history-item-overlay button {
+    background: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.history-item-overlay button:hover {
+    background: #667eea;
+    color: white;
+}
+
+/* Seed Control */
+.seed-control {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.seed-control input {
+    flex: 1;
+}
+
+.seed-control button {
+    white-space: nowrap;
+}

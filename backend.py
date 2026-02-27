@@ -2,6 +2,7 @@ import os
 import argparse
 import warnings
 import logging
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
@@ -11,13 +12,7 @@ import uvicorn
 # Filter out the specific warning from torch.amp.autocast_mode
 warnings.filterwarnings("ignore", message="User provided device_type of 'cuda', but CUDA is not available")
 
-# Import routers and deps
-from api.file_ops import router as file_ops_router
-from api.compress import router as compress_router
-from api.watermark import router as watermark_router
-from api.deps import set_lama_config
-
-# 配置日志
+# 配置日志（必须在 load_dotenv 之前）
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -27,6 +22,20 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
+
+# 加载 .env 文件
+load_dotenv()
+api_key = os.getenv("SILICONFLOW_API_KEY")
+logger.info(f"SILICONFLOW_API_KEY 已加载: {'是' if api_key else '否'}")
+if api_key:
+    logger.info(f"SILICONFLOW_API_KEY 前8位: {api_key[:8]}...")
+
+# Import routers and deps
+from api.file_ops import router as file_ops_router
+from api.compress import router as compress_router
+from api.watermark import router as watermark_router
+from api.ai_draw import router as ai_draw_router
+from api.deps import set_lama_config
 
 app = FastAPI(title="图片压缩工具网页版", version="1.0.0")
 
@@ -43,6 +52,7 @@ app.add_middleware(
 app.include_router(file_ops_router)
 app.include_router(compress_router)
 app.include_router(watermark_router)
+app.include_router(ai_draw_router)
 
 @app.get("/", response_class=HTMLResponse)
 async def read_root():
@@ -53,6 +63,18 @@ async def read_root():
             return HTMLResponse(content=f.read())
     else:
         return HTMLResponse(content="<h1>图片压缩工具网页版</h1><p>前端文件未找到</p>")
+
+
+@app.get("/ai", response_class=HTMLResponse)
+async def read_ai_draw():
+    """返回 AI 绘图页面 HTML"""
+    frontend_path = os.path.join(os.path.dirname(__file__), "frontend", "index_ai.html")
+    if os.path.exists(frontend_path):
+        with open(frontend_path, "r", encoding="utf-8") as f:
+            return HTMLResponse(content=f.read())
+    else:
+        return HTMLResponse(content="<h1>AI 绘图</h1><p>前端文件未找到</p>")
+
 
 # 挂载静态文件
 static_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "frontend")

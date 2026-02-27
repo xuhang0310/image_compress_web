@@ -2,6 +2,8 @@ fastapi==0.115.6
 uvicorn[standard]==0.24.0.post1
 Pillow==11.0.0
 python-multipart==0.0.9
+requests
+python-dotenv
 
 # NumPy 版本限制 (避免与 PyTorch 不兼容)
 numpy<2
